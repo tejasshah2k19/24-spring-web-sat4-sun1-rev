@@ -1,0 +1,57 @@
+
+getParameter -> bean -> class -> variable : form name 
+
+@Validated 
+@NotBlank 
+
+
+Singleton -> 
+		@Controller 
+		@Repository
+		@Service 
+		@Component 
+		
+---------------------------------------------------------------------------------------
+quick --> 
+java -jar project.jar
+
+
+deploy -> server -> war 
+
+deploy -> server -> war , jar 
+---------------------------------------------------------------------------------------
+  
+database -> 
+		1) spring data jdbc
+		2) mysql driver - connector 
+		
+configuration -> 
+	url 
+	username
+	password 
+	
+
+mysql -h spring-web-sat4-sun1-rev-tejasshah2k2k-babf.b.aivencloud.com -P 18866 -u avnadmin -p 
+
+		 
+----------------------------------------------------------------------------
+
+Signup -> firstname email password 
+
+Signup.jsp -> 
+
+-------------------------------------
+
+PreparedStatement ---> replace -> JdbcTemplate 
+
+@Autowired -> get 
+
+
+
+
+
+
+
+
+		
+		 
