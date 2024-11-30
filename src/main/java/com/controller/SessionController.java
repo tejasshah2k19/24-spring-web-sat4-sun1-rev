@@ -11,13 +11,13 @@ import com.dao.UserDao;
 @Controller
 public class SessionController {
 
-	@Autowired
+	@Autowired//get new existing 
 	UserDao userDao;
 	
 	@GetMapping("/signup")
 	public String signup() {
 		
-		return "Signup";
+		return "Signup";//jsp 
 	}
 	
 	@PostMapping("/saveuser")

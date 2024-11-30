@@ -2,6 +2,7 @@ package com.bean;
 
 public class UserBean {
 
+	private Integer userId;
 	private String firstName;
 	private String email;
 	private String password;
@@ -29,5 +30,14 @@ public class UserBean {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+	
 
 }
