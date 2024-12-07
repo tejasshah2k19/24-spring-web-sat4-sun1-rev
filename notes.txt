@@ -46,8 +46,22 @@ PreparedStatement ---> replace -> JdbcTemplate
 
 @Autowired -> get 
 
+--------------------------------------------------------------------------------
 
+file uploading 
 
+1) form method ->post 
+2) form enctype -> multipart/form-data 
+3) file uploading jar -> 
+		commons 1) io  
+				2) fileupload 
+4) bean -> instance variable -> MultipartFile 				
+5)application.properties*** 
+		1) file size 
+		2) request size 
+ 
+				
+				
 
 
 

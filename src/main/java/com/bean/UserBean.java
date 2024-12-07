@@ -1,12 +1,16 @@
 package com.bean;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class UserBean {
 
 	private Integer userId;
 	private String firstName;
 	private String email;
 	private String password;
-
+	
+	private MultipartFile  profile; 
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -38,6 +42,15 @@ public class UserBean {
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
+
+	public MultipartFile getProfile() {
+		return profile;
+	}
+
+	public void setProfile(MultipartFile profile) {
+		this.profile = profile;
+	}
+	
 	
 
 }
