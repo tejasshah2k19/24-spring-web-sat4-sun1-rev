@@ -34,6 +34,14 @@ configuration ->
 mysql -h spring-web-sat4-sun1-rev-tejasshah2k2k-babf.b.aivencloud.com -P 18866 -u avnadmin -p 
 
 		 
+create table users (
+	userId int primary key auto_increment,
+	firstName varchar(20),
+	email varchar(30),
+	password varchar(20), 
+	profilePath varchar(1000)
+);		 
+		 
 ----------------------------------------------------------------------------
 
 Signup -> firstname email password 
@@ -59,9 +67,73 @@ file uploading
 5)application.properties*** 
 		1) file size 
 		2) request size 
- 
+----------------------------------------
+file -> image -> controller -> 
+-----------------------------------------
+signup -> db save-> userDao {old} -> firstname email password 
+
+we want to add profile image path -> webapp-> images->XXXX.jpg 
+
+
+1) UserBean => profilePath 
+2) users table => column => profilePath  -> alter table users add column profilePath varchar(1000); 
+
+userBean.setProfilePath(path); -> controller 
+userDao -> insert query ->  
+ 			
+---------------------------------------------------------------------------
+file upload -> pdf jpeg png gif -> 
 				
-				
+---------------------------------------------------------------------------
+Bcrypt
+
+	royal -> encrypt -> 76584irejfhngbhut857tyrudij
+	
+	76584irejfhngbhut857tyrudij -> decrypt -> XXX 
+	
+	76584irejfhngbhut857tyrudij,royal =>  true 
+	 
+	 
+password encryption ===> 
+
+	1) pom.xml -> spring crypto 
+	2) Bcrypt -> object -> encrypt 
+		 
+	
+	
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

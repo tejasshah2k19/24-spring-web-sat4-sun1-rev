@@ -20,8 +20,8 @@ public class UserDao {
 	// queryForObject {select}
 
 	public void saveUser(UserBean userBean) {
-		jdbc.update("insert into users (firstName,email,password) values (?,?,?)", userBean.getFirstName(),
-				userBean.getEmail(), userBean.getPassword());
+		jdbc.update("insert into users (firstName,email,password,profilePath) values (?,?,?,?)", userBean.getFirstName(),
+				userBean.getEmail(), userBean.getPassword(),userBean.getProfilePath());
 	}
 
 	public List<UserBean> getAllUsers() {

@@ -10,6 +10,7 @@ public class UserBean {
 	private String password;
 	
 	private MultipartFile  profile; 
+	private String profilePath; 
 	
 	public String getFirstName() {
 		return firstName;
@@ -49,6 +50,14 @@ public class UserBean {
 
 	public void setProfile(MultipartFile profile) {
 		this.profile = profile;
+	}
+
+	public String getProfilePath() {
+		return profilePath;
+	}
+
+	public void setProfilePath(String profilePath) {
+		this.profilePath = profilePath;
 	}
 	
 	
