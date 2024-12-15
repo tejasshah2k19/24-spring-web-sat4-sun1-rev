@@ -8,6 +8,7 @@ public class UserBean {
 	private String firstName;
 	private String email;
 	private String password;
+	private String otp; 
 	
 	private MultipartFile  profile; 
 	private String profilePath; 
@@ -58,6 +59,14 @@ public class UserBean {
 
 	public void setProfilePath(String profilePath) {
 		this.profilePath = profilePath;
+	}
+
+	public String getOtp() {
+		return otp;
+	}
+
+	public void setOtp(String otp) {
+		this.otp = otp;
 	}
 	
 	

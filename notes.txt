@@ -99,13 +99,43 @@ password encryption ===>
 	1) pom.xml -> spring crypto 
 	2) Bcrypt -> object -> encrypt 
 		 
-	
+-----------------------------------------------------------
+gmail intergration - send mail 
+
+1)	pom.xml -> java mail api 
+			using spring starter 
+			
+2) gmail password generate 
+		app specific -> 
 	
 		
 
+3) configuration -> mail server -> 
+		application.properties 
+		
+4) service -> MailerService 
 
+------------------------------------------
 
+ChangePassword -> 
+		email 
+		password 
+		otp 
+					submit 
+					
+changepassword 
+		read -> email , otp, password 
+		dbCheck email -> otp ? 
+					yes 
+							update -> password 
 
+		error -> invalid data 
+
+otp 10 minutes -> 
+	otp : 123456 
+	createdTime : datetime 
+	
+------------------------------------------
 
 
 

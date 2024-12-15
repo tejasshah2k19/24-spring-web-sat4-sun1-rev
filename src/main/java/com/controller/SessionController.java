@@ -5,14 +5,16 @@ import java.io.File;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bean.UserBean;
 import com.dao.UserDao;
+import com.service.MailerService;
+import com.service.OtpGeneratorService;
 
 @Controller
 public class SessionController {
@@ -21,8 +23,14 @@ public class SessionController {
 	UserDao userDao;
 
 	@Autowired
-	PasswordEncoder passwordEncoder;//spring -> class -> object -> inject 
+	PasswordEncoder passwordEncoder;// spring -> class -> object -> inject
 
+	@Autowired
+	OtpGeneratorService otpGeneratorService;
+	
+	@Autowired
+	MailerService mailerService;
+	
 	@GetMapping("/signup")
 	public String signup() {
 
@@ -83,6 +91,63 @@ public class SessionController {
 		userDao.saveUser(userBean);
 
 		return "Login";
+	}
+
+	@PostMapping("/authentication")
+	public String authenticate(UserBean userBean, Model model) {
+
+		UserBean dbUser = userDao.getUserByEmail(userBean.getEmail());
+		if (dbUser == null) {
+			model.addAttribute("error", "Invalid Credentials");
+			return "Login";
+		} else {
+			boolean status = passwordEncoder.matches(userBean.getPassword(), dbUser.getPassword());
+			if (status == true) {
+				return "Home";
+				// login success
+			} else {
+				model.addAttribute("error", "Invalid Credentials");
+				return "Login";
+
+			}
+		}
+	}
+
+	@GetMapping(value = { "/", "login" })
+	public String login() {
+		return "Login";
+	}
+
+	@GetMapping("forgetpassword")
+	public String forgetPassword() {
+		return "ForgetPassword";
+	}
+
+	@PostMapping("forgetpassword")
+	public String sendOtp(@RequestParam String email,Model model) {
+		System.out.println("email => " + email);
+
+		// check db -> email present?
+		UserBean user = userDao.getUserByEmail(email);//null 
+		// true -> user 
+		// false -> null 
+		if(user == null) {
+			//invalid email 
+			model.addAttribute("email",email);
+			model.addAttribute("error","Email is not registered with us.");
+			return "ForgetPassword";
+		}else {
+			//otp generate 
+			String otp = otpGeneratorService.generateOtp(6);
+			//user->db->otp set
+			userDao.updateOtp(email,otp);
+			//mail send -- gmail 
+			mailerService.sendMailForOtp(email, otp);
+			
+			return "ChangePassword";
+		}
+		
+		
 	}
 
 }

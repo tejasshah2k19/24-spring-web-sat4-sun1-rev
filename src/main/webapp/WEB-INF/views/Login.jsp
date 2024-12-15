@@ -31,6 +31,13 @@
                     <!-- Submit Button -->
                     <button type="submit" class="btn btn-primary btn-block">Login</button>
                 </form>
+                <br> 
+                <a href="signup2">New User?</a>
+                |
+                <a href="forgetpassword">ForgetPassword?</a>
+                
+                <br>
+                <span class="text-danger">${error}</span>
             </div>
         </div>
     </div>

@@ -20,8 +20,8 @@ public class UserDao {
 	// queryForObject {select}
 
 	public void saveUser(UserBean userBean) {
-		jdbc.update("insert into users (firstName,email,password,profilePath) values (?,?,?,?)", userBean.getFirstName(),
-				userBean.getEmail(), userBean.getPassword(),userBean.getProfilePath());
+		jdbc.update("insert into users (firstName,email,password,profilePath) values (?,?,?,?)",
+				userBean.getFirstName(), userBean.getEmail(), userBean.getPassword(), userBean.getProfilePath());
 	}
 
 	public List<UserBean> getAllUsers() {
@@ -43,6 +43,22 @@ public class UserDao {
 	public void updateUser(UserBean user) {
 		jdbc.update("update users set firstName = ? , email = ? where userId = ? ", user.getFirstName(),
 				user.getEmail(), user.getUserId());
+	}
+
+	public UserBean getUserByEmail(String email) {
+		UserBean bean = null;
+		try {
+			bean = jdbc.queryForObject("select * from users where email = ?",
+					new BeanPropertyRowMapper<>(UserBean.class), new Object[] { email });
+		} catch (Exception e) {
+
+		}
+		return bean;
+	}
+
+	public void updateOtp(String email, String otp) {
+		jdbc.update("update users set otp = ? where email = ? ", otp, email);
+
 	}
 
 }
